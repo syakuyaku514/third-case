@@ -6,7 +6,7 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>ユーザ登録画面</h1>
+    <h1>会員登録</h1>
     @if ($errors->any())
         <div>
             <ul>
@@ -16,12 +16,12 @@
             </ul>
         </div>
     @endif
-    <form  method="POST"　action="{{ route("register") }}">
+    <form method="POST" action="{{ route('register') }}">
         @csrf
-        <div>
+        <!-- <div>
             <label for="name">ユーザ名</label>
         <input name="name" type="text" value="{{ old('name') }}"/>
-        </div>
+        </div> -->
         <div>
             <label for="email">メールアドレス</label>
         <input name="email" type="email" value="{{ old('email') }}"/>
@@ -30,12 +30,15 @@
             <label for="email">パスワード</label>
             <input name="password" type="password"/>
         </div>
-        <div>
+        <!-- <div>
             <label for="email">パスワード確認</label>
             <input name="password_confirmation" type="password"/>
+        </div> -->
+        <div>
+            <button type="submit">登録する</button>
         </div>
         <div>
-            <button type="submit">登録</button>
+            <a href="/login">ログインはこちら</a>
         </div>
     </form>    
 </body>

@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <h1>ログイン画面</h1>
+    <h1>ログイン</h1>
     @if ($errors->any())
         <div>
             <ul>
@@ -29,7 +29,12 @@
             <input name="password" type="password" />
         </div>
         <div>
-            <button type="submit">送信</button>
+            <div>
+                <button type="submit">ログインする</button>
+            </div>
+            <div>
+                <a href="/register">会員登録はこちら</a>
+            </div>
         </div>
     </form>
 </body>
