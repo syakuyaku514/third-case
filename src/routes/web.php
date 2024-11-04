@@ -14,8 +14,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
+// ゲスト
 Route::get('/', [UserController::class, 'index']);
 
+// ログイン後
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+});
 
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
