@@ -1,0 +1,12 @@
+/* ホームバー */
+.homevar {
+    display: flex;
+    background-color: black;
+    color: white;
+    justify-content: space-between;
+}
+
+.varbtn {
+    text-decoration: none;
+    color: white;
+}
