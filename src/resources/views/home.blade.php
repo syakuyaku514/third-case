@@ -15,6 +15,15 @@
 
     <!-- 商品リスト表示 -->
     <div v-if="showTab === 'recommended'">
+        <div class="item-list">
+            @foreach($items as $item)
+                <div class="item">
+                    <a href="{{ url('/item/' . $item->id) }}">
+                        <img src="{{ asset('img/商品写真.png') }}" alt="商品画像">
+                    </a>
+                </div>
+            @endforeach
+        </div>
     </div>
 
     <!-- お気に入りリスト表示 -->

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,12 @@ use App\Http\Controllers\UserController;
 */
 
 // ゲスト
+// ログイン
 Route::get('/', [UserController::class, 'index']);
+// 商品カード表示
+Route::get('/', [ItemController::class, 'index'])->name('home');
+// 商品詳細
+Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
 
 // ログイン後
 Route::middleware('auth')->group(function () {
