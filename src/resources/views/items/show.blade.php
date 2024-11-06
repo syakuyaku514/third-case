@@ -19,7 +19,7 @@
         <p>{{ $item->brandname }}</p>
 
         <!-- 価格 -->
-        <p>価格: ¥{{ number_format($item->price) }}</p>
+        <p>¥{{ number_format($item->price) }}（値段）</p>
 
         <button>お気に入りボタン</button>
         <button>コメントボタン</button>
@@ -28,12 +28,10 @@
         <button class="purchase-button">購入する</button>
 
         <!-- 商品説明 -->
-        <h2>商品説明</h2>
-        <p>{{ $item->description }}</p>
+        <h2>{{ $item->description }}</h2>
         <p>カラー: {{ $item->color }}</p>
 
         <!-- 状態 -->
-        <h2>商品の状態</h2>
         <p>{{ $item->condition->name }}</p>
 
         <p>
@@ -47,7 +45,6 @@
         </p>
 
         <!-- 発送について -->
-        <h2>発送について</h2>
         <p>購入後、即発送いたします。</p>
 
         <!-- 商品の情報 -->
