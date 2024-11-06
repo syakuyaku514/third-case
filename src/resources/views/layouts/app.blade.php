@@ -13,7 +13,9 @@
 
 <body>
     <div class="homevar">
-        <img src="{{ asset('img/logo.svg')}}" alt="メールアイコン" width="200" height="80">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('img/logo.svg')}}" alt="メールアイコン" width="200" height="80">
+        </a>
         <p>ここに検索ボックス</p>
         <div>
             @guest
