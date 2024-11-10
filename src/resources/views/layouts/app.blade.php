@@ -35,7 +35,15 @@
             @endguest
         </div>
         <div>
-            <button>出品</button>
+            @auth
+            <a href="{{ route('items.create') }}" class="varbtn">
+                <button type="button">出品</button>
+            </a>
+            @else
+            <a href="{{ route('login') }}" class="varbtn">
+                <button type="button">出品</button>
+            </a>
+            @endauth
         </div>
     </div>
 

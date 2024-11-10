@@ -9,7 +9,10 @@
     <img src="" alt="プロフィールアイコン">
     <p>ユーザー名表示</p>
 
-    <button>プロフィールを編集</button>
+    <!-- ボタンのラベルを条件によって変更 -->
+    <button onclick="location.href='{{ route($hasProfile ? 'profile.edit' : 'profile.create') }}'">
+        {{ $hasProfile ? 'プロフィールを編集' : 'プロフィールを登録' }}
+    </button>
 
     <button>出品した商品</button>
     <!-- ここに商品一覧 -->
