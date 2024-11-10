@@ -25,7 +25,7 @@
         <button>コメントボタン</button>
         
         <!-- 購入ボタン -->
-        <button class="purchase-button">購入する</button>
+        <a href="{{ route('purchase', ['item_id' => $item->id]) }}" class="purchase-button">購入する</a>
 
         <!-- 商品説明 -->
         <h2>{{ $item->description }}</h2>
