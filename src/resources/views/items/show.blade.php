@@ -25,33 +25,32 @@
         <button>コメントボタン</button>
         
         <!-- 購入ボタン -->
-        <a href="{{ route('purchase', ['item_id' => $item->id]) }}" class="purchase-button">購入する</a>
+        <a href="{{ route('purchase', ['item_id' => $item->id]) }}" class="purchase-button">
+            購入する
+        </a>
 
         <!-- 商品説明 -->
-        <h2>{{ $item->description }}</h2>
+        <h2>商品説明</h2>
         <p>カラー: {{ $item->color }}</p>
-
-        <!-- 状態 -->
-        <p>{{ $item->condition->name }}</p>
-
-        <p>
-            @if($item->condition->id == 1) <!-- 新品 -->
-                商品の状態は良好です。傷もありません。
-            @elseif($item->condition->id == 2) <!-- 良好 -->
-                商品の状態は良好です。
-            @elseif($item->condition->id == 3) <!-- 中古 -->
-                この商品は中古品です。
-            @endif
-        </p>
-
-        <!-- 発送について -->
-        <p>購入後、即発送いたします。</p>
+        <p>{{ $item->description }}</p>
 
         <!-- 商品の情報 -->
         <h2>商品の情報</h2>
         <ul>
-            <li>カテゴリー: {{ $item->category->name }}</li>
-            <li>商品の状態: {{ $item->condition->name }}</li>
+            <li>カテゴリー: 
+                @if($item->category)
+                    {{ $item->category->name }}
+                @else
+                カテゴリーが設定されていません。
+                @endif
+            </li>
+            <li>商品の状態: 
+                @if($item->condition)
+                    {{ $item->condition->name }}
+                @else
+                    状態が設定されていません。
+                @endif
+            </li>
         </ul>
     </div>
 @endsection

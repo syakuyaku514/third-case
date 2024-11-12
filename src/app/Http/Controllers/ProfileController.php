@@ -11,9 +11,10 @@ class ProfileController extends Controller
     public function showMyPage()
     {
         $user = Auth::user();
+        $profile = $user->profile;
         $hasProfile = $user->profile()->exists();
 
-        return view('mypage', compact('hasProfile'));
+        return view('mypage', compact('profile','hasProfile'));
     }
     
     public function edit()
