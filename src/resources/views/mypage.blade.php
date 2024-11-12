@@ -6,10 +6,9 @@
 
 @section('content')
 <div class="mypage">
-    <img src="" alt="プロフィールアイコン">
-    <p>ユーザー名表示</p>
+    <img src="{{ $profile && $profile->image ? asset('storage/' . $profile->image) : asset('images/default-icon.png') }}" alt="プロフィールアイコン">
+    <p>{{ $profile ? $profile->name : 'ゲストユーザー' }}</p>
 
-    <!-- ボタンのラベルを条件によって変更 -->
     <button onclick="location.href='{{ route($hasProfile ? 'profile.edit' : 'profile.create') }}'">
         {{ $hasProfile ? 'プロフィールを編集' : 'プロフィールを登録' }}
     </button>
