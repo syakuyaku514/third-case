@@ -15,13 +15,15 @@
         <input type="file" name="image" id="image" required>
 
         <!-- カテゴリー -->
-        <label for="category">カテゴリー</label>
-        <select name="category_id" id="category" required>
-            <option value="">選択してください</option>
+        <label>カテゴリー</label>
+        <div>
             @foreach($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <label>
+                    <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                    {{ $category->name }}
+                </label>
             @endforeach
-        </select>
+        </div>
 
         <!-- 商品の状態 -->
         <label for="condition">商品の状態</label>

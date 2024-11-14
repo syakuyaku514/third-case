@@ -34,7 +34,7 @@ class ItemController extends Controller
     {
         // バリデーション
         $validatedData = $request->validate([
-            'category_id' => 'required|integer',
+            'categories' => 'array|required',
             'condition_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'brandname' => 'nullable|string|max:255',
@@ -53,10 +53,13 @@ class ItemController extends Controller
         // 現在のユーザーIDを追加
         $validatedData['user_id'] = Auth::id();
 
-        // データベースに保存
-        Item::create($validatedData);
+        // データベースに保存し、Itemを作成
+        $item = Item::create($validatedData);
+
+        // 中間テーブルにカテゴリーを同期
+        $item->categories()->sync($request->categories);
 
         // 出品完了後、ホームページへリダイレクト
-        return redirect()->route('home')->with('success', '商品を出品しました！');
+        return redirect()->route('home')->with('success', '商品を出品しました');
     }
 }

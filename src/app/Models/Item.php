@@ -10,6 +10,17 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'condition_id',
+        'name',
+        'brandname',
+        'price',
+        'color',
+        'description',
+        'image',
+    ];
+
     public function orders()
     {
         return $this->hasMany(Order::class);
@@ -42,7 +53,7 @@ class Item extends Model
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'category_item');
+        return $this->belongsToMany(Category::class, 'category_item', 'item_id', 'category_id');
     }
     
 

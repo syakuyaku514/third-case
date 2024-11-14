@@ -15,6 +15,8 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
-        Item::factory()->count(10)->create();
+        Item::factory(10)->create()->each(function ($item) {
+            $item->categories()->attach([rand(1, 5), rand(1, 5)]);
+        });
     }
 }

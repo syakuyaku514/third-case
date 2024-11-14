@@ -38,10 +38,12 @@
         <h2>商品の情報</h2>
         <ul>
             <li>カテゴリー: 
-                @if($item->category)
-                    {{ $item->category->name }}
+                @if($item->categories->isNotEmpty())
+                    @foreach($item->categories as $category)
+                        <span>{{ $category->name }}</span>
+                    @endforeach
                 @else
-                カテゴリーが設定されていません。
+                    カテゴリーが設定されていません。
                 @endif
             </li>
             <li>商品の状態: 
