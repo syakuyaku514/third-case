@@ -32,7 +32,8 @@ https://github.com:syakuyaku514/market-application
 
 
 # ER図
-![ER図](https://github.com/user-attachments/assets/1fc23cef-70d6-4328-87e6-9e859f59f3b2)
+![ER図](https://github.com/user-attachments/assets/985af457-229a-421f-af28-b62e426afa6c)
+
 
 
 
