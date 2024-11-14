@@ -79,6 +79,7 @@ php artisan storage:link
 
 
 ## その他
+カテゴリーのデザインが複数選択だったため、出品時のカテゴリーのフォームをチェックボックスにしています。
 #### URL
 * 開発環境    : http://localhost/
 * phpMyAdmin  : http://localhost:8080/
