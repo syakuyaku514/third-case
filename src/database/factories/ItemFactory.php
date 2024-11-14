@@ -19,8 +19,8 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-             'user_id' => $this->faker->numberBetween(1, 10), 
-            'category_id' => $this->faker->numberBetween(1, 5),
+            'user_id' => $this->faker->numberBetween(1, 10), 
+            // 'category_id' => $this->faker->numberBetween(1, 5),
             'condition_id' => $this->faker->numberBetween(1, 3),
             'name' => $this->faker->word,
             'brandname' => $this->faker->company,
