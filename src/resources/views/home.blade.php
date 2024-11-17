@@ -19,7 +19,9 @@
             @foreach($items as $item)
                 <div class="item">
                     <a href="{{ url('/item/' . $item->id) }}">
-                        <img src="{{ asset('img/商品写真.png') }}" alt="商品画像">
+                        <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}">
+
+
                     </a>
                 </div>
             @endforeach
