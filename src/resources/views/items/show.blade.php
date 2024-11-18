@@ -9,7 +9,7 @@
     <div class="">
         <div class="item">
             <!-- 商品画像 -->
-            <img src="{{ asset('img/商品写真.png') }}" alt="商品画像">
+            <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}">
         </div>
 
         <!-- 商品名 -->
@@ -21,7 +21,19 @@
         <!-- 価格 -->
         <p>¥{{ number_format($item->price) }}（値段）</p>
 
-        <button>お気に入りボタン</button>
+        <form action="{{ route('favorite.toggle') }}" method="POST">
+            @csrf
+            <input type="hidden" name="item_id" value="{{ $item->id }}">
+
+            <button type="submit" class="favorite-button">
+                @if (Auth::check() && Auth::user()->favorites()->where('item_id', $item->id)->exists())
+                    <img src="{{ asset('img/黄色星.png') }}" alt="お気に入り">
+                @else
+                    <img src="{{ asset('img/星.png') }}" alt="お気に入り解除">
+                @endif
+            </button>
+        </form>
+
         <button>コメントボタン</button>
         
         <!-- 購入ボタン -->
