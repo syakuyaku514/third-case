@@ -32,7 +32,24 @@ class SoldItemController extends Controller
 
     public function updateAddress(Request $request, $item_id)
     {
+        // ログイン中のユーザーのプロフィールを取得
+        $profile = Profile::where('user_id', auth()->id())->first();
 
-        return redirect()->route('purchase.confirmation');
+        // 入力値のバリデーション
+        $request->validate([
+            'post' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'building' => 'nullable|string|max:255',
+        ]);
+
+        // プロフィールの住所情報を更新
+        $profile->update([
+            'post' => $request->post,
+            'address' => $request->address,
+            'building' => $request->building,
+        ]);
+
+        // 確認画面にリダイレクト
+        return redirect()->route('purchase', ['item_id' => $item_id]);
     }
 }

@@ -46,8 +46,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/purchase/address/{item_id}', [SoldItemController::class, 'changeAddress'])->name('address.change');
     Route::post('/purchase/address/{item_id}', [SoldItemController::class, 'changeAddress'])->name('address.change');
-
-    Route::post('/purchase/address/{item_id}', [SoldItemController::class, 'updateAddress'])->name('address.update');
+    Route::put('/purchase/address/{item_id}', [SoldItemController::class, 'updateAddress'])->name('address.update');
 });
 
 
