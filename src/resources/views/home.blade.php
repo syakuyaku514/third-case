@@ -20,8 +20,6 @@
                 <div class="item">
                     <a href="{{ url('/item/' . $item->id) }}">
                         <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}">
-
-
                     </a>
                 </div>
             @endforeach
