@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SoldItemController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,10 @@ Route::middleware('auth')->group(function () {
     // お気に入り機能
     Route::get('/item/{id}', [FavoriteController::class, 'show'])->name('item.show');
     Route::post('/favorite/toggle', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');
+
+    // コメント機能
+    Route::get('/item/{id}/comment', [CommentController::class, 'show'])->name('item.comment');
+    Route::post('/item/{id}/comment', [CommentController::class, 'store'])->name('item.comment.store');
 });
 
 

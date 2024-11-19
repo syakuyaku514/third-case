@@ -34,7 +34,9 @@
             </button>
         </form>
 
-        <button>コメントボタン</button>
+        <a href="{{ route('item.comment', ['id' => $item->id]) }}">
+            <button>コメントボタン</button>
+        </a>
         
         <!-- 購入ボタン -->
         <a href="{{ route('purchase', ['item_id' => $item->id]) }}" class="purchase-button">
