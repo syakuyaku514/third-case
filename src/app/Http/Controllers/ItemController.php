@@ -13,8 +13,12 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
+        $favoriteItems = Auth::check()
+            ? Auth::user()->favorites()->with('item')->get()->pluck('item')
+            : collect(); // ログインしていない場合は空コレクション
 
-        return view('home', compact('items'));
+
+        return view('home', compact('items', 'favoriteItems'));
     }
 
     public function show(Item $item)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -13,8 +14,10 @@ class ProfileController extends Controller
         $user = Auth::user();
         $profile = $user->profile;
         $hasProfile = $user->profile()->exists();
+        // 出品した商品
+        $listedItems = Item::where('user_id', $user->id)->get();
 
-        return view('mypage', compact('profile','hasProfile'));
+        return view('mypage', compact('profile','hasProfile','listedItems'));
     }
     
     public function edit()

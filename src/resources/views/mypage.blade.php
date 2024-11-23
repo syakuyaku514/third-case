@@ -13,9 +13,37 @@
         {{ $hasProfile ? 'プロフィールを編集' : 'プロフィールを登録' }}
     </button>
 
-    <button>出品した商品</button>
-    <!-- ここに商品一覧 -->
-    <button>購入した商品</button>
-    <!-- ここに商品一覧 -->
+    <!-- タブボタン -->
+    <div class="tabs">
+        <form method="GET" action="{{ route('mypage') }}">
+            <input type="hidden" name="tab" value="listed">
+            <button type="submit" class="tab-button {{ request('tab', 'listed') === 'listed' ? 'active' : '' }}">
+                出品した商品
+            </button>
+        </form>
+        <form method="GET" action="{{ route('mypage') }}">
+            <input type="hidden" name="tab" value="purchased">
+            <button type="submit" class="tab-button {{ request('tab') === 'purchased' ? 'active' : '' }}">
+                購入した商品
+            </button>
+        </form>
+    </div>
+
+    <!-- 出品した商品 -->
+    @if(request('tab', 'listed') === 'listed')
+        <div class="item-list">
+            @if($listedItems->isEmpty())
+                <p>出品した商品がありません。</p>
+            @else
+                @foreach($listedItems as $item)
+                    <div class="item">
+                        <a href="{{ url('/item/' . $item->id) }}">
+                            <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}">
+                        </a>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+    @endif
 </div>
 @endsection
