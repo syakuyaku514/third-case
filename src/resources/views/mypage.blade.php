@@ -45,5 +45,29 @@
             @endif
         </div>
     @endif
+
+    <!-- 購入した商品 -->
+@if(request('tab', 'listed') === 'purchased')
+    <div class="item-list">
+        @if($purchasedItems->isEmpty())
+            <p>購入した商品がありません。</p>
+        @else
+            @foreach($purchasedItems as $item)
+                <div class="item">
+                    <a href="{{ url('/item/' . $item->id) }}">
+                        <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}">
+                    </a>
+                    <p>購入日: {{ $item->purchased_at }}</p>
+                </div>
+            @endforeach
+        @endif
+    </div>
+@endif
+
+
+
+
+
+
 </div>
 @endsection
