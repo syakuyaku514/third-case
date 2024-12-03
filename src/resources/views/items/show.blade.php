@@ -39,9 +39,14 @@
         </a>
         
         <!-- 購入ボタン -->
-        <a href="{{ route('purchase', ['item_id' => $item->id]) }}" class="purchase-button">
-            購入する
-        </a>
+        @if ($item->isSold())
+       <p>この商品は完売しました</p>
+       @else
+           <form action="{{ route('purchase', ['item_id' => $item->id]) }}" method="GET">
+           @csrf
+               <button type="submit" class="purchase-button">購入する</button>
+           </form>
+        @endif
 
         <!-- 商品説明 -->
         <h2>商品説明</h2>

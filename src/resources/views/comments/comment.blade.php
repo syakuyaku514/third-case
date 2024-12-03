@@ -43,6 +43,17 @@
                         ? $comment->user->profile->name 
                         : 'ゲストユーザー' }}</p>
                 <p>{{ $comment->comment }}</p>
+
+                <!-- コメント削除ボタン -->
+                @if (Auth::check() && Auth::id() === $comment->user_id)
+                <form action="{{ route('comment.delete', ['id' => $comment->id]) }}" method="POST" style="margin-left: auto;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" style="background: none; border: none; color: red; cursor: pointer;">
+                    削除
+                </button>
+                </form>
+                @endif
             </div>
         </li>
     @endforeach
@@ -52,6 +63,8 @@
     @if (session('success'))
         <p>{{ session('success') }}</p>
     @endif
+
+    
 
     <form action="{{ route('item.comment.store', ['id' => $item->id]) }}" method="POST">
         @csrf

@@ -46,9 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', [ItemController::class, 'create'])->middleware('auth')->name('items.create');
     Route::post('/sell', [ItemController::class, 'store'])->middleware('auth')->name('items.store');
 
-    Route::get('/purchase/{item_id}', [SoldItemController::class, 'purchase'])->name('purchase');
-    Route::get('/purchase/complete/{item_id}', [PurchaseController::class, 'completePurchase'])->name('complete_purchase');
-
+    // 住所変更
     Route::get('/purchase/address/{item_id}', [SoldItemController::class, 'changeAddress'])->name('address.change');
     Route::post('/purchase/address/{item_id}', [SoldItemController::class, 'changeAddress'])->name('address.change');
     Route::put('/purchase/address/{item_id}', [SoldItemController::class, 'updateAddress'])->name('address.update');
@@ -60,6 +58,13 @@ Route::middleware('auth')->group(function () {
     // コメント機能
     Route::get('/item/{id}/comment', [CommentController::class, 'show'])->name('item.comment');
     Route::post('/item/{id}/comment', [CommentController::class, 'store'])->name('item.comment.store');
+    Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comment.delete');
+
+    // 購入
+    Route::get('/purchase/{item_id}', [SoldItemController::class, 'purchase'])->name('purchase');
+    Route::post('/complete_purchase/{item_id}', [SoldItemController::class, 'completePurchase'])->name('complete_purchase');
+    Route::get('/thank-you', [SoldItemController::class, 'thankYou'])->name('thank_you');
+
 });
 
 

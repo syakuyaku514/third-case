@@ -1,94 +1,74 @@
 @extends('layouts.app')
+<script src="https://js.stripe.com/v3/"></script>
 
 @section('content')
 <div class="purchase-page">
     <h1>購入手続き</h1>
 
-    <!-- 商品画像 -->
+    <!-- 商品情報 -->
     <div class="item-image">
         <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}">
     </div>
-
-    <!-- 商品名 -->
     <div class="item-name">
         <h2>{{ $item->name }}</h2>
     </div>
-
-    <!-- 商品金額 -->
     <div class="item-price">
         <p>¥{{ number_format($item->price) }}</p>
     </div>
 
     <!-- 支払方法 -->
-    <div>
-        <h2>支払方法</h2>
-        <form id="payment-form">
+<div>
+    <h2>支払方法</h2>
+    <form id="payment-method-form">
+        @foreach ($paymentMethods as $paymentMethod)
             <label>
-                <input type="radio" name="payment_method" value="クレジットカード" checked>
-                クレジットカード
+                <input 
+                    type="radio" 
+                    name="payment_method" 
+                    value="{{ $paymentMethod->name }}" 
+                    {{ $loop->first ? 'checked' : '' }} 
+                    onchange="updateSelectedPaymentMethod('{{ $paymentMethod->name }}')">
+                {{ $paymentMethod->name }}
             </label>
             <br>
-            <label>
-                <input type="radio" name="payment_method" value="コンビニ払い">
-                コンビニ払い
-            </label>
-            <br>
-            <label>
-                <input type="radio" name="payment_method" value="銀行振込">
-                銀行振込
-            </label>
-        </form>
-    </div>
-
-    <!-- 配送先 -->
-    <div>
-        <h2>配送先</h2>
-        <a href="{{ route('address.change', ['item_id' => $item->id]) }}">変更する</a>
-    </div>
-
-
-
-
-    <div>
-        <!-- 確認カード -->
-
-        <!-- 商品代金 -->
-        <div class="total-price">
-            <h3>商品代金</h3>
-            <p>¥{{ number_format($item->price) }}</p>
-        </div>
-
-        <!-- 支払い金額 -->
-        <div class="total-price">
-            <h3>支払い金額</h3>
-            <p>¥{{ number_format($item->price) }}</p>
-        </div>
-
-        <!-- 支払方法 -->
-        <div>
-            <h3>支払方法</h3>
-            <p id="selected-payment-method">クレジットカード</p>
-        </div>
-    </div>
-
-    <!-- 購入ボタン -->
-    <form action="{{ route('complete_purchase', ['item_id' => $item->id]) }}" method="POST">
-        @csrf
-        <button type="submit" class="purchase-button">購入する</button>
+        @endforeach
     </form>
 </div>
 
+<!-- 確認カード -->
+<div>
+    <h3>支払方法</h3>
+    <p id="selected-payment-method">{{ $paymentMethods->first()->name }}</p>
+</div>
+
+<!-- 購入ボタン -->
+<form id="payment-form" action="{{ route('complete_purchase', ['item_id' => $item->id]) }}" method="POST">
+    @csrf
+    <input type="hidden" name="payment_method" id="hidden-payment-method" value="{{ $paymentMethods->first()->name }}">
+    <div id="card-element" style="display: none;"></div>
+    <button type="submit" class="purchase-button">購入する</button>
+</form>
+</div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // 支払い方法のラジオボタンが変更されたときに実行
-        const paymentForm = document.getElementById('payment-form');
-        const selectedPaymentMethod = document.getElementById('selected-payment-method');
+    const stripe = Stripe('{{ env('STRIPE_KEY') }}');
+    const elements = stripe.elements();
+    const card = elements.create('card');
+    const paymentMethodForm = document.getElementById('payment-method-form');
+    const selectedPaymentMethod = document.getElementById('selected-payment-method');
+    const cardElement = document.getElementById('card-element');
+    const paymentForm = document.getElementById('payment-form');
 
-        paymentForm.addEventListener('change', (event) => {
-            const selectedOption = document.querySelector('input[name="payment_method"]:checked');
-            selectedPaymentMethod.textContent = selectedOption.value;
-        });
-    });
+    function updateSelectedPaymentMethod(paymentMethod) {
+    document.getElementById('selected-payment-method').innerText = paymentMethod;
+    document.getElementById('hidden-payment-method').value = paymentMethod;
+
+    // クレジットカード選択時にStripe用のフォームを表示
+    if (paymentMethod === 'クレジットカード') {
+        document.getElementById('card-element').style.display = 'block';
+    } else {
+        document.getElementById('card-element').style.display = 'none';
+    }
+}
 </script>
 @endsection

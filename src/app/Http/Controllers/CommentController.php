@@ -34,4 +34,18 @@ class CommentController extends Controller
         return redirect()->route('item.comment', ['id' => $id])
                          ->with('success', 'コメントを投稿しました');
     }
+
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        // コメントの所有者チェック
+        if (auth()->id() !== $comment->user_id) {
+            return redirect()->back()->with('error', 'このコメントを削除する権限がありません。');
+        }
+
+        $comment->delete();
+
+        return redirect()->back()->with('success', 'コメントを削除しました。');
+    }
 }

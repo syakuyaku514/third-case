@@ -12,12 +12,22 @@ class ProfileController extends Controller
     public function showMyPage()
     {
         $user = Auth::user();
+
+        // プロフィール情報
         $profile = $user->profile;
         $hasProfile = $user->profile()->exists();
+
         // 出品した商品
         $listedItems = Item::where('user_id', $user->id)->get();
 
-        return view('mypage', compact('profile','hasProfile','listedItems'));
+        // 購入した商品
+        $purchasedItems = \DB::table('sold_items')
+            ->join('items', 'sold_items.item_id', '=', 'items.id')
+            ->where('sold_items.user_id', $user->id)
+            ->select('items.*', 'sold_items.created_at as purchased_at')
+            ->get();
+
+        return view('mypage', compact('profile', 'hasProfile', 'listedItems', 'purchasedItems'));
     }
     
     public function edit()
