@@ -24,7 +24,7 @@ class Item extends Model
     // 完売の状況を判定
     public function isSold()
     {
-        return \App\Models\SoldItem::where('item_id', $this->id)->exists();
+        return SoldItem::where('item_id', $this->id)->exists();
     }
 
     public function orders()

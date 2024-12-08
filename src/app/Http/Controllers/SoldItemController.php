@@ -115,6 +115,12 @@ class SoldItemController extends Controller
             'payment_id' => $payment->id,
         ]);
 
+        // sold_items テーブルにデータを追加
+        SoldItem::create([
+            'user_id' => auth()->id(),
+            'item_id' => $itemId,
+        ]);
+
         return view('items.complete', ['order' => $order]);
     } catch (\Exception $e) {
         return back()->withErrors(['error' => '購入処理中にエラーが発生しました: ' . $e->getMessage()]);
@@ -126,8 +132,10 @@ class SoldItemController extends Controller
     {
         $item = Item::findOrFail($itemId);
 
-        Stripe::setApiKey(config('services.stripe.secret')); // Stripe APIキーを設定
+    Stripe::setApiKey(config('services.stripe.secret')); // Stripe APIキーを設定
 
+    try {
+        // Stripeの支払いセッションを作成
         $checkoutSession = StripeSession::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
@@ -145,7 +153,26 @@ class SoldItemController extends Controller
             'cancel_url' => url()->previous(), // キャンセル時にリダイレクトするURL
         ]);
 
-        return redirect($checkoutSession->url); // StripeのCheckoutページへリダイレクト
+        // Stripeで決済が成功したと仮定して注文を作成
+        $payment = Payment::firstOrCreate(['name' => 'クレジットカード']);
+
+        $order = Order::create([
+            'user_id' => auth()->id(),
+            'item_id' => $itemId,
+            'payment_id' => $payment->id,
+        ]);
+
+        // sold_itemsテーブルにデータを追加
+        SoldItem::create([
+            'user_id' => auth()->id(),
+            'item_id' => $itemId,
+        ]);
+
+        // StripeのCheckoutページへリダイレクト
+        return redirect($checkoutSession->url);
+    } catch (\Exception $e) {
+        return back()->withErrors(['error' => 'Stripe決済中にエラーが発生しました: ' . $e->getMessage()]);
+    }
     }
 
     public function createPaymentIntent(Request $request)
