@@ -21,11 +21,13 @@ class ProfileController extends Controller
         $listedItems = Item::where('user_id', $user->id)->get();
 
         // 購入した商品
-        $purchasedItems = \DB::table('sold_items')
-            ->join('items', 'sold_items.item_id', '=', 'items.id')
-            ->where('sold_items.user_id', $user->id)
-            ->select('items.*', 'sold_items.created_at as purchased_at')
+        $purchasedItems = \DB::table('orders')
+            ->join('items', 'orders.item_id', '=', 'items.id')
+            ->where('orders.user_id', $user->id)
+            ->select('items.*', 'orders.created_at as purchased_at')
             ->get();
+
+            // dd
 
         return view('mypage', compact('profile', 'hasProfile', 'listedItems', 'purchasedItems'));
     }
