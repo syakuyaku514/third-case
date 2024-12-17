@@ -16,7 +16,12 @@
         <a href="{{ url('/') }}">
             <img src="{{ asset('img/logo.svg')}}" alt="メールアイコン" width="200" height="80">
         </a>
-        <p>ここに検索ボックス</p>
+        <div>
+            <form action="{{ route('items.index') }}" method="GET" class="search-form">
+                <input type="text" name="search" placeholder="商品を検索" value="{{ old('search', $search ?? '') }}" class="search-box">
+                <button type="submit" class="search-btn">検索</button>
+            </form>
+        </div>
         <div>
             @guest
                 <a href="/login" class="varbtn">ログイン</a>

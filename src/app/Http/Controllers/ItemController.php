@@ -10,15 +10,29 @@ use App\Models\Condition;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::all();
+        // 検索クエリを取得
+        $search = $request->input('search');
+
+        // 検索条件を適用
+        $query = Item::query();
+
+        if ($search) {
+            $query->where('name', 'LIKE', '%' . $search . '%')
+                  ->orWhere('brandname', 'LIKE', '%' . $search . '%')
+                  ->orWhere('description', 'LIKE', '%' . $search . '%');
+        }
+
+        // 商品一覧を取得
+        $items = $query->paginate(10);
+
+        // ユーザーがログインしている場合、ユーザーのお気に入りを取得
         $favoriteItems = Auth::check()
             ? Auth::user()->favorites()->with('item')->get()->pluck('item')
             : collect(); // ログインしていない場合は空コレクション
 
-
-        return view('home', compact('items', 'favoriteItems'));
+        return view('home', compact('items', 'favoriteItems', 'search'));
     }
 
     public function show(Item $item)
