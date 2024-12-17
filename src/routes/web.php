@@ -57,6 +57,9 @@ Route::get('/', [UserController::class, 'index']);
 Route::get('/', [ItemController::class, 'index'])->name('home');
 // 商品詳細
 Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
+// 検索
+Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+
 
 // ログイン後
 Route::middleware('auth')->group(function () {
