@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SoldItemController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,36 @@ use App\Http\Controllers\CommentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// 管理者登録
+    Route::get('/admin/register', [AdminController::class, 'showRegisterForm'])->name('admin.registerForm');
+    Route::post('/admin/register', [AdminController::class, 'registerAdmin'])->name('admin.register.submit');
+
+// 管理者ログイン
+    Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.loginForm');
+    Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
+
+
+// 管理者
+Route::group(['middleware' => ['auth:admin']], function () {
+    // 管理者ダッシュボード
+    Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
+     
+    // 管理者ログアウト
+    Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+    // ユーザー削除
+    Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+
+    // コメント削除
+    Route::delete('/admin/comments/{comment}', [AdminController::class, 'deleteComment'])->name('admin.comments.delete');
+    
+    // メール送信機能
+    Route::get('/admin/send-email', [AdminController::class, 'showSendEmailForm'])->name('admin.sendEmailForm');
+    Route::post('/admin/send-email', [AdminController::class, 'sendEmail'])->name('admin.sendEmail');
+
+        
+});
 
 // ゲスト
 // ログイン
