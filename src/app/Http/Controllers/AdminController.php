@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterAdminRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
@@ -22,13 +23,10 @@ class AdminController extends Controller
     }
 
     // 管理者登録処理
-    public function registerAdmin(Request $request)
+    public function registerAdmin(RegisterAdminRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:admins',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+        // バリデーション済みデータを取得
+        $validated = $request->validated();
 
         // 管理者登録
         Admin::create([
