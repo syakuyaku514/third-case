@@ -3,39 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <title>ログイン</title>
 </head>
 <body>
+    <div class="homevar">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('img/logo.svg')}}" alt="メールアイコン" class="homevarimg">
+        </a>
+    </div>
 
-    <h1>ログイン</h1>
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <form  method="POST" action="/login">
-        @csrf
-        <div>
-            <label for="email">メールアドレス</label>
-            <input name="email" type="email" value="{{old('email')}}"/>
-        </div>
-        <div>
-            <label for="password">パスワード</label>
-            <input name="password" type="password" />
-        </div>
-        <div>
+    <div class="loginform">
+        <h1>ログイン</h1>
+        @if ($errors->any())
             <div>
-                <button type="submit">ログインする</button>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form  method="POST" action="/login" class="form">
+            @csrf
+            <div class="formlabel">
+                <label for="email" class="inptlabel">メールアドレス</label>
+                <input name="email" type="email" class="inputfom" value="{{old('email')}}"/>
+            </div>
+            <div class="formlabel">
+                <label for="password" class="inptlabel">パスワード</label>
+                <input name="password" class="inputfom" type="password" />
             </div>
             <div>
-                <a href="/register">会員登録はこちら</a>
+                <div>
+                    <button type="submit" class="loginbtn">ログインする</button>
+                </div>
+                <div>
+                    <a href="/register" class="loginlnk">会員登録はこちら</a>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 </html>

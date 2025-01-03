@@ -50,6 +50,12 @@
 </form>
 </div>
 
+<!-- 住所変更リンク -->
+<div>
+    <a href="{{ route('address.change', ['item_id' => $item->id]) }}" class="btn btn-secondary">住所を変更する</a>
+</div>
+
+
 <script>
     const stripe = Stripe('{{ env('STRIPE_KEY') }}');
     const elements = stripe.elements();
