@@ -25,7 +25,7 @@ class ItemController extends Controller
         }
 
         // 商品一覧を取得
-        $items = $query->paginate(10);
+        $items = $query->get();
 
         // ユーザーがログインしている場合、ユーザーのお気に入りを取得
         $favoriteItems = Auth::check()

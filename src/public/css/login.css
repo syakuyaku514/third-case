@@ -1,0 +1,51 @@
+.homevar {
+    display: flex;
+    background-color: black;
+    color: white;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.loginform {
+    text-align: center;
+}
+
+.form {
+    text-align: -webkit-center;
+}
+
+/* .formlabel {
+    display: table-caption;
+} */
+
+.loginbtn {
+    border: none;
+    background-color: tomato;
+    color: white;
+    width: 50%;
+    height: 40px;
+    border-radius: 3px 3px 3px 3px;
+    margin-bottom: 2%;
+}
+
+.loginlnk {
+    text-decoration: none;
+    color: #167fd3;
+}
+
+.inputfom {
+    height: 30px;
+    width: 50%;
+    margin-bottom: 4%;
+}
+
+.inptlabel {
+    display: block;
+    margin-left: -42%;
+}
+
+.homevarimg {
+    height: 50%;
+    width: 65%;
+    margin: 16px 15px;
+}

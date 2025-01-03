@@ -14,39 +14,38 @@
 <body>
     <div class="homevar">
         <a href="{{ url('/') }}">
-            <img src="{{ asset('img/logo.svg')}}" alt="メールアイコン" width="200" height="80">
+            <img src="{{ asset('img/logo.svg')}}" alt="メールアイコン" class="homevarimg">
         </a>
-        <div>
+        <div class="homevarsearch">
             <form action="{{ route('items.index') }}" method="GET" class="search-form">
-                <input type="text" name="search" placeholder="商品を検索" value="{{ old('search', $search ?? '') }}" class="search-box">
-                <button type="submit" class="search-btn">検索</button>
+                <input type="text" name="search" value="{{ old('search', $search ?? '') }}" class="search-box" placeholder="なにをお探しですか？">
             </form>
         </div>
-        <div>
+        <div class="btn">
             @guest
                 <a href="/login" class="varbtn">ログイン</a>
             @endguest
         </div>
 
-        <div>
+        <div class="guestbtn">
             @guest
-                <a href="/register" class="varbtn">会員登録</a>
+                <a href="/register" class="varbtn registerbtn">会員登録</a>
             @else
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit">ログアウト</button>
+                    <button type="submit" class="logoutbtn">ログアウト</button>
                 </form>
-                <a href="{{ route('mypage')}}" class="varbtn">マイページ</a>
+                <a href="{{ route('mypage')}}" class="varbtn mypagebtn">マイページ</a>
             @endguest
         </div>
-        <div>
+        <div class="btn">
             @auth
             <a href="{{ route('items.create') }}" class="varbtn">
-                <button type="button">出品</button>
+                <button type="button" class="listingbtn">出品</button>
             </a>
             @else
             <a href="{{ route('login') }}" class="varbtn">
-                <button type="button">出品</button>
+                <button type="button" class="listingbtn">出品</button>
             </a>
             @endauth
         </div>
