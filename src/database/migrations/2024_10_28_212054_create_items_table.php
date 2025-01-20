@@ -21,7 +21,7 @@ class CreateItemsTable extends Migration
             $table->string('name', 255);
             $table->string('brandname', 255);
             $table->integer('price');
-            $table->string('color', 255);
+            // $table->string('color', 255);
             $table->string('description', 255);
             $table->string('image', 255);
             $table->timestamps();

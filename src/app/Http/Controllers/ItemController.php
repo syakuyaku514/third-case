@@ -37,7 +37,14 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-        return view('items.show', compact('item'));
+        // お気に入りの件数を取得
+        $favoriteCount = $item->favorites()->count();
+
+        // コメントの件数を取得
+        $commentCount = $item->comments()->count();
+
+        // ビューにデータを渡す
+        return view('items.show', compact('item', 'favoriteCount', 'commentCount'));
     }
 
     public function create()

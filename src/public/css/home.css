@@ -23,7 +23,7 @@
     width: 20%;
 }
 
-.item img {
+.itemimg {
     width: 60%;
     height: 60%;
     object-fit: cover;
@@ -67,6 +67,7 @@
     background-color: transparent;
     /* 必要に応じて */
     cursor: pointer;
+    font-size: 16px;
 }
 
 .tab-button.active {
@@ -93,6 +94,9 @@
 
 .guestbtn {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .mypagebtn {
@@ -100,5 +104,47 @@
 }
 
 .registerbtn {
-    margin-top: 31%;
+    margin-top: 25%;
+    text-align: center;
+}
+
+/* 768px以下のスタイル */
+@media (max-width: 768px) {
+    .item {
+        width: 20%;
+        /* 横に5つ並べる */
+    }
+
+    .itemimg {
+        width: 80%;
+        height: auto;
+    }
+
+    .tabs {
+        justify-content: flex-start;
+        /* 左寄せ */
+        gap: 20px;
+    }
+
+    .homevarsearch {
+        width: 40%;
+    }
+
+    .search-box {
+        width: 75%;
+    }
+
+    .guestbtn {
+        display: flow;
+        width: 20%;
+        text-align: center;
+    }
+
+    .logoutbtn {
+        margin-left: -15%;
+    }
+
+    .guestbtn {
+        justify-content: flex-end;
+    }
 }

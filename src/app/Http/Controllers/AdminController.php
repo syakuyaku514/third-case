@@ -67,6 +67,7 @@ class AdminController extends Controller
     {
         // 全ユーザーと全コメントを取得
         $users = User::all();
+        $users = User::with('profile')->get();
         $comments = Comment::all();
 
         return view('admin.index', compact('users','comments'));

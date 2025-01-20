@@ -1,0 +1,76 @@
+.item-img {
+    width: 150%;
+    height: 100%;
+}
+
+.purchaseitem {
+    display: flex;
+}
+
+.payment {
+    display: flex;
+    margin-bottom: 8%;
+}
+
+.purchase-page {
+    display: flex;
+}
+
+.card {
+    display: flex;
+}
+
+.paycard {
+    border: solid 1px #9c9c9c;
+    width: 80%;
+    height: 300px;
+}
+
+.paybtn {
+    border: none;
+    background-color: tomato;
+    color: white;
+    width: 100%;
+    margin-top: 5%;
+    border-radius: 5px 5px 5px 5px;
+    width: 80%;
+}
+
+.purchase-info {
+    width: 35%;
+    margin: 5%;
+}
+
+.paymentcard {
+    width: 35%;
+    margin: 5%;
+}
+
+.item-name {
+    margin-left: 35%;
+}
+
+.payment-method-form {
+    margin-left: 120%;
+    width: 100%;
+}
+
+.btn-secondary {
+    margin-left: 40%;
+    margin-top: 6%;
+    text-decoration: none;
+    color: blue;
+}
+
+.cardh3 {
+    margin-left: 10%;
+}
+
+.cardp {
+    margin-left: 20%;
+}
+
+.pay {
+    margin-top: 5%;
+    margin-bottom: 13%;
+}

@@ -25,7 +25,7 @@ class ItemFactory extends Factory
             'name' => $this->faker->word,
             'brandname' => $this->faker->company,
             'price' => $this->faker->numberBetween(1000, 50000),
-            'color' => $this->faker->randomElement(['グレー', 'ネイビー', 'ブラック', 'ホワイト','イエロー']),
+            // 'color' => $this->faker->randomElement(['グレー', 'ネイビー', 'ブラック', 'ホワイト','イエロー']),
             'description' => $this->faker->sentence,
             'image' => '商品写真.png', 
             'created_at' => now(),

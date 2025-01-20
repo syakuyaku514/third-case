@@ -29,7 +29,7 @@
             @foreach($items as $item)
                 <div class="item">
                     <a href="{{ url('/item/' . $item->id) }}">
-                        <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}">
+                        <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}" class="itemimg">
                     </a>
                 </div>
             @endforeach
@@ -45,7 +45,7 @@
                 @foreach($favoriteItems as $item)
                     <div class="item">
                         <a href="{{ url('/item/' . $item->id) }}">
-                            <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}">
+                            <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.png') }}" alt="{{ $item->name }}"  class="itemimg">
                         </a>
                     </div>
                 @endforeach

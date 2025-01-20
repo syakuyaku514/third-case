@@ -49,3 +49,11 @@
     width: 65%;
     margin: 16px 15px;
 }
+
+.loginli {
+    list-style: none;
+}
+
+.registerli {
+    list-style: none;
+}
