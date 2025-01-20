@@ -1,0 +1,170 @@
+.mypageimg {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px 60px 60px 60px;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+.mypageprofile {
+    display: flex;
+    font-size: 30px;
+}
+
+.username {
+    margin: 8% 5%;
+}
+
+.profilebtn {
+    width: 12%;
+    height: 100%;
+    margin-top: 8.5%;
+    margin-left: 30%;
+    border: 1px solid tomato;
+    background-color: white;
+    color: tomato;
+}
+
+.listimg {
+    width: 65%;
+    height: 80%;
+}
+
+.itemimg {
+    width: 80%;
+    height: 60%;
+}
+
+.tabform {
+    margin-left: 2%;
+}
+
+.tabpay {
+    margin-left: 2%;
+    width: 160%;
+}
+
+
+/* プロフィール編集画面 */
+.profile-edit {
+    text-align: center;
+    margin: 2% 32%;
+}
+
+.imgbtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: tomato;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid tomato;
+    margin-left: 8%;
+    margin-top: 5%;
+    position: relative;
+    top: -50px;
+}
+
+.imginput {
+    display: none;
+}
+
+.formlabel {
+    display: block;
+    text-align: justify;
+}
+
+.forminput {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 6%;
+}
+
+.imgprofile {
+    width: 23%;
+    height: 103px;
+    border-radius: 100px 100px 100px 100px;
+}
+
+.profileimage {
+    text-align: justify;
+}
+
+.updatebtn {
+    border: none;
+    background-color: tomato;
+    color: white;
+    width: 100%;
+    height: 35px;
+    font-size: 20px;
+    margin-top: 5%;
+}
+
+.categorycheck {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 1px solid #d0d0d0;
+}
+
+
+
+
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: tomato;
+    border: 1px solid tomato;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 5%;
+}
+
+/* ファイル選択のインプットを非表示に */
+.file-input {
+    display: none;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+}
+
+.imageform {
+    border: 1px solid #d0d0d0;
+    width: 100%;
+    height: 100px;
+}
+
+.goodsimage {
+    text-align: justify;
+    margin-bottom: 0%;
+}
+
+.categorylabel {
+    display: flex;
+    justify-self: flex-start;
+}
+
+.conditionselect {
+    width: 100%;
+    height: 40px;
+}
+
+.title {
+    border-bottom: 1px solid #8d8d8d;
+    text-align: justify;
+    color: #8d8d8d;
+}
+
+/* 768px以下のスタイル */
+@media (max-width: 768px) {
+.profile-edit {
+        text-align: center;
+        margin: 0% 0%;
+    }
+}

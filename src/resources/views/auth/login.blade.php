@@ -19,7 +19,7 @@
             <div>
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li class="loginli">{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>

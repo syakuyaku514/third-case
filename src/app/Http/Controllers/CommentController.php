@@ -16,7 +16,13 @@ class CommentController extends Controller
                        ->with('user.profile') // プロフィールまでリレーションをロード
                        ->get();
 
-        return view('comments.comment', compact('item', 'comments'));
+        // お気に入りの件数を取得
+        $favoriteCount = $item->favorites()->count();
+
+        // コメントの件数を取得
+        $commentCount = $item->comments()->count();
+
+        return view('comments.comment', compact('item', 'comments', 'favoriteCount', 'commentCount'));
     }
 
     public function store(Request $request, $id)
