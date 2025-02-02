@@ -80,6 +80,10 @@ php artisan db:seed
 ```
 php artisan storage:link
 ```
+9. テストの実行 
+```
+php artisan test
+```
 
 
 ## その他
