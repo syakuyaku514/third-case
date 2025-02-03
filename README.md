@@ -96,3 +96,6 @@ php artisan test
 #### URL
 * 開発環境    : http://localhost/
 * phpMyAdmin  : http://localhost:8080/
+* 管理者ページログイン　: http://localhost/admin/login
+* 管理者テスト用メールアドレス　: admin@admin
+* 管理者テスト用パスワード　: admin
