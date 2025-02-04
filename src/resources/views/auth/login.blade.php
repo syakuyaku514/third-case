@@ -17,7 +17,7 @@
         <h1>ログイン</h1>
         @if ($errors->any())
             <div>
-                <ul>
+                <ul class="loginfomul">
                     @foreach ($errors->all() as $error)
                         <li class="loginli">{{ $error }}</li>
                     @endforeach

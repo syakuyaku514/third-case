@@ -45,7 +45,6 @@
     <!-- コメント一覧 -->
     <ul>
     @foreach ($comments as $comment)
-    <!-- アイコンの大きさをCSSで表示！！ -->
         <li class="icom">
             <!-- ユーザーアイコン -->
             <img src="{{ $comment->user && $comment->user->profile && $comment->user->profile->image

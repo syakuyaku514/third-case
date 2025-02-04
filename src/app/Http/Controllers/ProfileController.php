@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -26,8 +27,6 @@ class ProfileController extends Controller
             ->where('orders.user_id', $user->id)
             ->select('items.*', 'orders.created_at as purchased_at')
             ->get();
-
-            // dd
 
         return view('mypage', compact('profile', 'hasProfile', 'listedItems', 'purchasedItems'));
     }
