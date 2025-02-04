@@ -50,9 +50,6 @@
             <label for="brandname" class="categorylabel">ブランド名</label>
             <input type="text" name="brandname">
 
-            <!-- <label for="color">カラー</label>
-            <input type="text" name="color"> -->
-
             <label for="description" class="categorylabel">商品の説明</label>
             <textarea name="description" required></textarea>
         </div>

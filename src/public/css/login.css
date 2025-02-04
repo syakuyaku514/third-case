@@ -14,10 +14,6 @@
     text-align: -webkit-center;
 }
 
-/* .formlabel {
-    display: table-caption;
-} */
-
 .loginbtn {
     border: none;
     background-color: tomato;
@@ -56,4 +52,8 @@
 
 .registerli {
     list-style: none;
+}
+
+.loginfomul {
+    list-style-type: none;
 }
