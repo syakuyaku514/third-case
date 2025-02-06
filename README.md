@@ -98,8 +98,9 @@ php artisan test
 支払方法を選択するため、購入ページの支払方法をラジオボタンで選択できるようにしています。<br>
 
 #### URL
-* 開発環境    : http://localhost/
-* phpMyAdmin  : http://localhost:8080/
-* 管理者ページログイン　: http://localhost/admin/login
-* 管理者テスト用メールアドレス　: admin@admin
-* 管理者テスト用パスワード　: admin
+* 開発環境  　　　　　     　　  : http://localhost/
+* 本番環境　　　　　　　     　　：http://54.238.246.249/
+* phpMyAdmin 　　　　　　　　 　 : http://localhost:8080/
+* 管理者ページログイン　　　　　　: http://localhost/admin/login
+* 管理者テスト用メールアドレス　　: admin@admin
+* 管理者テスト用パスワード　　　　: admin
