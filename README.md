@@ -101,6 +101,6 @@ php artisan test
 * 開発環境  　　　　　     　　  : http://localhost/
 * 本番環境　　　　　　　     　　：http://54.238.246.249/
 * phpMyAdmin 　　　　　　　　 　 : http://localhost:8080/
-* 管理者ページログイン　　　　　　: http://localhost/admin/login
-* 管理者テスト用メールアドレス　　: admin@admin
-* 管理者テスト用パスワード　　　　: admin
+* 管理者ページテスト登録　　　　　: http://localhost/admin/register
+* 管理者ページ本番登録ページ　　　：http://54.238.246.249/admin/register
+* 管理者ページは登録画面にテスト用を登録した後、/admin/registerへ移動し、テスト用の管理者ユーザーでログインしてください。
