@@ -99,7 +99,7 @@ php artisan test
 
 #### URL
 * 開発環境  　　　　　     　　  : http://localhost/
-* 本番環境　　　　　　　     　　：http://54.238.246.249/
+* 本番環境　　　　　　　     　　：http://fleamarket-web-lb-338593642.ap-northeast-1.elb.amazonaws.com
 * phpMyAdmin 　　　　　　　　 　 : http://localhost:8080/
 * 管理者ページテスト登録　　　　　: http://localhost/admin/register
 * 管理者ページ本番登録ページ　　　：http://54.238.246.249/admin/register
